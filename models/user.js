@@ -8,7 +8,8 @@ const userSchema = new mongoose.Schema({
   email: {
     type: String,
     required: true,
-    unique: true // Each email should be unique in the database
+    unique: true, // Each email should be unique in the database
+    match: [/^\S+@\S+\.\S+$/, "Please enter a valid email"] // email validation
   },
   age: {
     type: Number,
@@ -17,3 +18,6 @@ const userSchema = new mongoose.Schema({
 },{
   timestamps: true // Automatically adds createdAt and updatedAt fields, its mandantory to add
 })
+
+const User = mongoose.model('User', userSchema);
+module.exports = User;
