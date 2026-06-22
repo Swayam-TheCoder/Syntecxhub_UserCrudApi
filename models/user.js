@@ -11,9 +11,10 @@ const userSchema = new mongoose.Schema({
     unique: true, // Each email should be unique in the database
     match: [/^\S+@\S+\.\S+$/, "Please enter a valid email"] // email validation
   },
-  age: {
-    type: Number,
-    required: true
+  password: {
+    type: String,
+    required: true,
+    minlength: 6 // Password should be at least 6 characters long
   },
 },{
   timestamps: true // Automatically adds createdAt and updatedAt fields, its mandantory to add
